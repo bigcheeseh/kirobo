@@ -6,7 +6,6 @@ const defaultMnemonic = process.env.REACT_APP_DEFAULT_MNEMONIC;
 const defaultPath = "m/44'/60'/0'/0/0"
 
 function Wallet() {
-  console.log(process.env, "process.env.REACT_APP_INFURA_ENDPOINT")
   const infuraEndpoint = process.env.REACT_APP_INFURA_ENDPOINT;
   const [mnemonic, setMnemonic] = React.useState<string | undefined>(defaultMnemonic);
   const [path, setPath] = React.useState<string>(defaultPath);
