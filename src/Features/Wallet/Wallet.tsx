@@ -30,6 +30,17 @@ function Wallet() {
     }
   }
 
+  const handleClearWallet = () => {
+    setWallet(undefined)
+  }
+
+  const handleSetMnemonic = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setMnemonic(e.target.value)
+  }
+
+  const handleSetPath = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPath(e.target.value)
+  }
  
   React.useEffect(() => {
     const setCurrentBalance = async() => {
@@ -51,19 +62,19 @@ function Wallet() {
            balance: {balance ? balance : <Loader active inline />}
         </b>
       </Segment>
-      <Button onClick={() => setWallet(undefined)}>Change Account</Button>
+      <Button onClick={handleClearWallet}>Change Account</Button>
       </>
     )
   }
   return (
     <Form onSubmit={handleWalletSubmit} className="Container">
       <Form.Field>
-        <Input label="mnemonic" type="text" name="mnemonic" value={mnemonic} onChange={(e) => setMnemonic(e.target.value)}/>
+        <Input label="mnemonic" type="text" name="mnemonic" value={mnemonic} onChange={handleSetMnemonic}/>
       </Form.Field>
       <Form.Field>
-        <Input label="path" type="text" name="path" value={path} onChange={(e) => setPath(e.target.value)}/>
+        <Input label="path" type="text" name="path" value={path} onChange={handleSetPath}/>
       </Form.Field>
-      <b style={{color: "red"}}>{createWalletError}</b>
+      <b style={{ color: "red" }}>{createWalletError}</b>
       <Button type="submit">Open Wallet</Button>
     </Form>
   );
