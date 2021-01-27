@@ -2,12 +2,13 @@ import React from 'react';
 import { ethers } from "ethers";
 import { Input, Loader, Button, Form, Segment } from 'semantic-ui-react'
 
-const defaultMnemonic = "next february eternal worry ivory access mean wash cry involve economy bacon faint actual combine";
+const defaultMnemonic = process.env.REACT_APP_DEFAULT_MNEMONIC;
 const defaultPath = "m/44'/60'/0'/0/0"
 
 function Wallet() {
-  const infuraEndpoint = "https://kovan.infura.io/v3/c794d84311a643b299680974f24a9d91"
-  const [mnemonic, setMnemonic] = React.useState<string>(defaultMnemonic);
+  console.log(process.env, "process.env.REACT_APP_INFURA_ENDPOINT")
+  const infuraEndpoint = process.env.REACT_APP_INFURA_ENDPOINT;
+  const [mnemonic, setMnemonic] = React.useState<string | undefined>(defaultMnemonic);
   const [path, setPath] = React.useState<string>(defaultPath);
   const [wallet, setWallet] = React.useState<ethers.Wallet | undefined>();
   const [balance, setBalance] = React.useState<string>();
@@ -16,8 +17,9 @@ function Wallet() {
   const handleWalletSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const provider = ethers.providers.getDefaultProvider(infuraEndpoint)
+
     try {
-      let newWallet = ethers.Wallet.fromMnemonic(mnemonic, path);
+      let newWallet = ethers.Wallet.fromMnemonic(mnemonic!, path);
       let ethersWallet = new ethers.Wallet(newWallet.privateKey, provider);
  
       setWallet(ethersWallet);
