@@ -78,7 +78,7 @@ function DeviceInfo() {
   }
   React.useEffect(getDeviceInfo, []);
   return (
-    <div className="DeviceInfo">
+    <div className="Container Align-Center">
       <b>{deviceInfo?.hostType}</b>
       <br />
       <b>{deviceInfo?.deviceType}</b>

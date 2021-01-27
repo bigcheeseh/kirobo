@@ -1,15 +1,18 @@
 import React from 'react';
-import DeviceInfo from "./Features/DeviceInfo"
-import Web3Account from "./Features/Web3Account"
+import DeviceInfo from "./Features/DeviceInfo";
+import Wallet from "./Features/Wallet";
+import * as Icon from 'react-cryptocoins';
+import 'semantic-ui-css/semantic.min.css'
 import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <DeviceInfo />
-        <Web3Account />
-      </header>
+        <div className="Container Align-Center">
+          <Icon.Eth size={82} color="white" style={{padding: 16}}/>
+          <DeviceInfo />
+        </div>
+        <Wallet />
     </div>
   );
 }
