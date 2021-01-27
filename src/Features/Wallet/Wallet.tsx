@@ -6,7 +6,6 @@ const defaultMnemonic = process.env.REACT_APP_DEFAULT_MNEMONIC;
 const defaultPath = "m/44'/60'/0'/0/0"
 
 function Wallet() {
-  const infuraEndpoint = process.env.REACT_APP_INFURA_ENDPOINT;
   const [mnemonic, setMnemonic] = React.useState<string | undefined>(defaultMnemonic);
   const [path, setPath] = React.useState<string>(defaultPath);
   const [wallet, setWallet] = React.useState<ethers.Wallet | undefined>();
@@ -15,8 +14,8 @@ function Wallet() {
 
   const handleWalletSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const infuraEndpoint = process.env.REACT_APP_INFURA_ENDPOINT;
     const provider = ethers.providers.getDefaultProvider(infuraEndpoint)
-
     try {
       let newWallet = ethers.Wallet.fromMnemonic(mnemonic!, path);
       let ethersWallet = new ethers.Wallet(newWallet.privateKey, provider);
