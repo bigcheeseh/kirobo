@@ -2,11 +2,11 @@ import React from 'react';
 import { ethers } from "ethers";
 import { Input, Loader, Button, Form, Segment } from 'semantic-ui-react'
 
-const defaultMnemonic = process.env.REACT_APP_DEFAULT_MNEMONIC;
+
 const defaultPath = "m/44'/60'/0'/0/0"
 
 function Wallet() {
-  const [mnemonic, setMnemonic] = React.useState<string | undefined>(defaultMnemonic);
+  const [mnemonic, setMnemonic] = React.useState<string | undefined>();
   const [path, setPath] = React.useState<string>(defaultPath);
   const [wallet, setWallet] = React.useState<ethers.Wallet | undefined>();
   const [balance, setBalance] = React.useState<string>();
