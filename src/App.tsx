@@ -1,24 +1,18 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import DeviceInfo from "./Features/DeviceInfo";
+import Wallet from "./Features/Wallet";
+import * as Icon from 'react-cryptocoins';
+import 'semantic-ui-css/semantic.min.css'
+import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <div className="Container Align-Center">
+          <Icon.Eth size={82} color="white" style={{padding: 16}}/>
+          <DeviceInfo />
+        </div>
+        <Wallet />
     </div>
   );
 }
